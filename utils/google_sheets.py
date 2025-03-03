@@ -1,24 +1,23 @@
 import os
+import json
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
 SHEET_NAME = "Nitrogen_Usage_Log"
 
-
 def connect_to_sheets():
     scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
 
-    credentials_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS", "utils/credentials.json")
+    credentials_json = os.getenv("GOOGLE_CREDENTIALS")  # Берем JSON из переменной окружения
 
-    if not os.path.exists(credentials_path):
-        raise FileNotFoundError(
-            f"Файл {credentials_path} не найден. Проверь путь или установи GOOGLE_APPLICATION_CREDENTIALS.")
+    if not credentials_json:
+        raise FileNotFoundError("Переменная GOOGLE_CREDENTIALS не найдена!")
 
-    creds = ServiceAccountCredentials.from_json_keyfile_name(credentials_path, scope)
+    credentials_dict = json.loads(credentials_json)  # Преобразуем JSON-строку в словарь
+    creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials_dict, scope)  # Создаем креды
     client = gspread.authorize(creds)
 
-    return client.open(SHEET_NAME).sheet1  # Открываем первый лист таблицы
-
+    return client.open(SHEET_NAME).sheet1  # Открываем Google Sheets
 
 def add_entry_to_sheets(data):
     sheet = connect_to_sheets()
