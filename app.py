@@ -1,9 +1,9 @@
 import os
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 from utils.google_sheets import add_entry_to_sheets
 from datetime import datetime
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="static")
 
 # Департаменты и лаборатории
 DEPARTMENTS = {
@@ -16,7 +16,7 @@ DEPARTMENTS = {
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
-        print(request.form)  # Проверяем, какие данные приходят в консоль Render
+        print(request.form)  # Проверяем, какие данные приходят в консоль
 
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         name = request.form.get("name")
@@ -28,12 +28,12 @@ def index():
 
         if name and worker_id and floor and department and lab and liters:
             add_entry_to_sheets([timestamp, name, worker_id, floor, department, lab, liters])
-            print("Record Was Succesfully added!")
+            print("Record was successfully added!")
 
-        return redirect("/")
+        return redirect(url_for("index"))
 
     return render_template("index.html", departments=list(DEPARTMENTS.keys()), labs=DEPARTMENTS)
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 8080))  # Render передает PORT в окружении
-    app.run(host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=port, debug=True)

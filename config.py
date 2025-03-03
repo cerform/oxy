@@ -1,1 +1,4 @@
-# Настройки Google Sheets API
+import os
+class Config:
+    STATIC_FOLDER = "static"
+    TEMPLATES_FOLDER = "templates"

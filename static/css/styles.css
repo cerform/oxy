@@ -1,51 +1,60 @@
+/* Общие стили */
 body {
-    background-color: #002147;
     font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-}
-
-h1 {
+    background-color: #0A1734; /* Темно-синий фон */
     color: white;
-    margin-bottom: 20px;
+    text-align: center;
+    padding: 50px;
 }
 
+/* Заголовок */
+h2 {
+    color: white;
+}
+
+/* Стили для формы */
 form {
-    background: rgba(255, 255, 255, 0.1);
+    background: #1E2A47; /* Темно-серый фон формы */
     padding: 20px;
     border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    width: 90%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
     max-width: 400px;
+    margin: auto;
 }
 
-input, select, button {
+/* Стили для меток */
+label {
+    display: block;
+    margin-top: 10px;
+    text-align: left;
+    color: white;
+}
+
+/* Поля ввода и выпадающие списки */
+input, select {
     width: 100%;
-    height: 40px;
-    font-size: 16px;
-    padding: 5px;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    border: none;
+    font-size: 16px;
 }
 
+/* Кнопка отправки */
 button {
-    background-color: #ffcc00;
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    background-color: #FFC107; /* Желтая кнопка */
+    color: black;
     font-weight: bold;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
+    font-size: 18px;
 }
 
+/* Эффект при наведении */
 button:hover {
-    background-color: orange;
+    background-color: #ffdb4d;
 }
