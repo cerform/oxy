@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, request, redirect
 from utils.google_sheets import add_entry_to_sheets
 from datetime import datetime
@@ -30,5 +31,5 @@ def index():
     return render_template("index.html", departments=list(DEPARTMENTS.keys()), labs=DEPARTMENTS)
 
 if __name__ == "__main__":
-    port = int(os.getenv("PORT", 5000))  # Render передает PORT в окружении
-    app.run(host="0.0.0.0", port=port)
+    port = int(os.getenv("PORT", 8080))  # Используем PORT из окружения или 8080
+    app.run(host="0.0.0.0", port=port)  # Запуск на всех интерфейсах
