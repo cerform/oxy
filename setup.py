@@ -1,4 +1,6 @@
+import json
 import os
+from oauth2client.service_account import ServiceAccountCredentials
 
 # Директории
 dirs = [
@@ -30,8 +32,8 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 def connect_to_sheets():
     scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-    creds = ServiceAccountCredentials.from_json_keyfile_name("path/to/your/credentials.json", scope)
-    client = gspread.authorize(creds)
+    credentials_json = json.loads(os.getenv("GOOGLE_CREDENTIALS"))
+    creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials_json, scope)
     return client
 """,
     "templates/index.html": "<!-- HTML форма -->",

@@ -3,34 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nitrogen Usage Tracker</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Nitrogen Usage Log</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Nitrogen Usage Tracker</h1>
-        <form method="POST">
-            <input type="text" name="name" placeholder="Full Name" required>
-            <input type="text" name="worker_id" placeholder="Worker ID" required>
-            <select name="floor" id="floor" required>
-                <option value="">Select Floor</option>
-                {% for i in range(1, 14) %}
-                    <option value="{{ i }}">{{ i }} Floor</option>
-                {% endfor %}
-            </select>
-            <select name="department" id="department" required>
-                <option value="">Select Department</option>
-                {% for department in departments %}
-                    <option value="{{ department }}">{{ department }}</option>
-                {% endfor %}
-            </select>
-            <select name="lab" id="lab" required>
-                <option value="">Select Laboratory</option>
-            </select>
-            <input type="number" name="liters" placeholder="Liters of Liquid Nitrogen" required>
-            <button type="submit">Submit</button>
-        </form>
-    </div>
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <h2>Nitrogen Usage Form</h2>
+    <form method="POST">
+        <label>Name:</label>
+        <input type="text" name="name" required><br>
+
+        <label>Worker ID:</label>
+        <input type="text" name="worker_id" required><br>
+
+        <label>Floor:</label>
+        <input type="number" name="floor" required><br>
+
+        <label>Department:</label>
+        <select name="department" required>
+            <option value="Biochemistry">Biochemistry</option>
+            <option value="Physics">Physics</option>
+            <option value="Chemistry">Chemistry</option>
+            <option value="Engineering">Engineering</option>
+        </select><br>
+
+        <label>Lab:</label>
+        <select name="lab" required>
+            <option value="Genetics Lab">Genetics Lab</option>
+            <option value="Protein Research Lab">Protein Research Lab</option>
+            <option value="Quantum Mechanics Lab">Quantum Mechanics Lab</option>
+            <option value="Optics Lab">Optics Lab</option>
+            <option value="Organic Chemistry Lab">Organic Chemistry Lab</option>
+            <option value="Analytical Chemistry Lab">Analytical Chemistry Lab</option>
+            <option value="Robotics Lab">Robotics Lab</option>
+            <option value="Nanotechnology Lab">Nanotechnology Lab</option>
+        </select><br>
+
+        <label>Liters Used:</label>
+        <input type="number" name="liters" required><br>
+
+        <button type="submit">Submit</button>
+    </form>
 </body>
 </html>
