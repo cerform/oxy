@@ -30,4 +30,5 @@ def index():
     return render_template("index.html", departments=list(DEPARTMENTS.keys()), labs=DEPARTMENTS)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.getenv("PORT", 5000))  # Render передает PORT в окружении
+    app.run(host="0.0.0.0", port=port)
