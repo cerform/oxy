@@ -1,0 +1,1 @@
+# Настройки Google Sheets API

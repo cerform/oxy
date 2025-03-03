@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nitrogen Usage Tracker</title>
+    <style>
+        body {
+            background-color: #002147;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        select, input, button {
+            padding: 10px;
+            margin: 5px;
+            border-radius: 8px;
+            border: none;
+            font-size: 16px;
+        }
+        button {
+            background-color: #ffcc00;
+            color: #002147;
+            font-weight: bold;
+        }
+        #lab {
+            min-width: 200px;
+            display: block;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Nitrogen Usage Tracker</h1>
+
+    <form method="POST">
+        <input type="text" name="name" placeholder="Full Name" required>
+        <input type="text" name="worker_id" placeholder="Worker ID" required>
+
+        <select name="floor" id="floor">
+            <option value="">Select Floor</option>
+            {% for i in range(1, 14) %}
+                <option value="{{ i }}">{{ i }} Floor</option>
+            {% endfor %}
+        </select>
+
+        <select name="department" id="department" onchange="updateLabs()" required>
+            <option value="">Select Department</option>
+            {% for department in departments %}
+                <option value="{{ department }}">{{ department }}</option>
+            {% endfor %}
+        </select>
+
+        <select name="lab" id="lab" required>
+            <option value="">Select Laboratory</option>
+        </select>
+
+        <input type="number" name="liters" placeholder="Liters of Liquid Nitrogen" required>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+body {
+    background-color: #002147; /* Темно-синий фон */
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column; /* Ставим элементы в колонку */
+    align-items: center; /* Выравниваем по центру */
+    justify-content: center;
+    height: 100vh; /* Заполняем всю высоту экрана */
+}
+
+h1 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+form {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column; /* Выстраиваем элементы вертикально */
+    align-items: center;
+    gap: 15px; /* Отступы между элементами */
+}
+
+input, select, button {
+    width: 300px; /* Фиксированная ширина элементов */
+    height: 40px;
+    font-size: 16px;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+}
+
+button {
+    background-color: yellow;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: orange;
+}
